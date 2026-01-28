@@ -54,6 +54,7 @@ class UserController {
         email,
         password: hashedPassword,
         role: role || 'user',
+        provider: 'local',
       });
 
       // filter response

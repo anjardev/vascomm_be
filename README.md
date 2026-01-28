@@ -53,6 +53,9 @@ The server will run on the configured port (default: 3000).
 > Redirect-based OAuth flow (browser only).
 - `GET /api/v1/auth/google` - Login with Google
 - `GET /api/v1/auth/google/callback` - Google OAuth callback
+> Token-based OAuth flow (no redirect).
+> Suitable for mobile apps, SPA, Postman, and API clients.
+- `POST /api/v1/auth/google/token` - Login with Google ID Token
 
 ### Products
 - `GET /api/v1/products` - Get all products

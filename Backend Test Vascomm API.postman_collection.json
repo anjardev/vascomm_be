@@ -1,15 +1,96 @@
 {
   "info": {
-    "_postman_id": "91b2cce1-b72e-4ab9-a1bb-6f0392ee20e6",
+    "_postman_id": "fb6fc6d6-70fb-410d-aab2-0b91f206a802",
     "name": "Backend Test Vascomm API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "39382195",
-    "_collection_link": "https://go.postman.co/collection/39382195-91b2cce1-b72e-4ab9-a1bb-6f0392ee20e6?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/39382195-fb6fc6d6-70fb-410d-aab2-0b91f206a802?source=collection_link"
   },
   "item": [
     {
       "name": "Auth",
       "item": [
+        {
+          "name": "Google OAuth Web",
+          "item": [
+            {
+              "name": "Login with Google",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/auth/google",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "google"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Google OAuth callback",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/api/v1/auth/google/callback",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "google",
+                    "callback"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Google OAuth API",
+          "item": [
+            {
+              "name": "Login with Google",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk1NDRkMGZmMDU5MGYwMjUzMDE2NDNmMzI3NWJmNjg3NzY3NjU4MjIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiI3NDQ1OTA3NDgyNC1hMXA4OWdtOWhocnBqMmI5Zzgxb2dmOWIyOWtrcmYwZi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6Ijc0NDU5MDc0ODI0LWExcDg5Z205aGhycGoyYjlnODFvZ2Y5YjI5a2tyZjBmLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA1MzcwNjk3Mjc0MjU1Mjk3OTU0IiwiZW1haWwiOiJhbmphcmRldi5zYW5qYXlhQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoibE1FUVhlOTRGdnRyOWV2c0dQWU83QSIsIm5hbWUiOiJBbmphciBEZXYiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSkNLNGREREdPWm5QWHRtdWMtRE9ndWR6TFg4amtIaUVWRFBQMXo0LURGb2pRd2dRPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6IkFuamFyIiwiZmFtaWx5X25hbWUiOiJEZXYiLCJpYXQiOjE3Njk2MDYyMDIsImV4cCI6MTc2OTYwOTgwMn0.gy3YkZ1ACNa1RZdrBIn1Ikams3gEX_V3I3l-3Imlnq77CQo0IZK28xcYJanKeQSlYcgHY4psOIvKMSJij17ppHzZYhg1PZyqofoP2x1U7yOr42qWWJlScC9uO0gNOBqRA6r_Hy_xXGn8Mx4pG9YJ6grnoX_VFdA_1EZrqzbgw_qQhe6iV6yhRhCh1G76R1pXSphZgxdgUw9OZVFkE-w2vpyTLG5nbS9buWlMvJbvJc53XQE7WzO3PZxeRj4Zqz6K8hNzWsPpeTPZtiWo60nfj3OWTB8oOB7MAuehmy5qYiP01cEtVfclKHRGNMUDGkI60AoPkdVe_Oxz7pixlWcJJQ\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/v1/auth/google/token",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "google",
+                    "token"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
         {
           "name": "Register User",
           "request": {
@@ -30,6 +111,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "auth",
                 "register"
               ]
@@ -49,7 +132,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"user14@mail.com\",\n  \"password\": \"password123\"\n}"
+              "raw": "{\n  \"email\": \"admin@mail.com\",\n  \"password\": \"password\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/v1/auth/login",
@@ -57,6 +140,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "auth",
                 "login"
               ]
@@ -84,6 +169,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "auth",
                 "refresh-token"
               ]
@@ -107,6 +194,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "auth",
                 "logout"
               ]
@@ -135,6 +224,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "users"
               ],
               "query": [
@@ -171,6 +262,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "users",
                 "{{user_id}}"
               ]
@@ -202,6 +295,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "users"
               ]
             }
@@ -232,6 +327,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "users",
                 "{{user_id}}"
               ]
@@ -255,6 +352,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "users",
                 "{{user_id}}"
               ]
@@ -278,11 +377,13 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/api/v1/products?take=10&skip=0&search=produc",
+              "raw": "{{base_url}}/api/v1/products?take=10&skip=0&search=",
               "host": [
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "products"
               ],
               "query": [
@@ -296,7 +397,7 @@
                 },
                 {
                   "key": "search",
-                  "value": "produc"
+                  "value": ""
                 }
               ]
             }
@@ -319,6 +420,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "products",
                 "{{product_id}}"
               ]
@@ -350,6 +453,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "products"
               ]
             }
@@ -380,6 +485,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "products",
                 "{{product_id}}"
               ]
@@ -403,6 +510,8 @@
                 "{{base_url}}"
               ],
               "path": [
+                "api",
+                "v1",
                 "products",
                 "{{product_id}}"
               ]
@@ -416,7 +525,7 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "http://localhost:3000/api",
+      "value": "http://localhost:3000",
       "type": "string"
     },
     {

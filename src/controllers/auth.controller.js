@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { OAuth2Client } from 'google-auth-library';
 import db from '../models/index.js';
 import { successResponse, errorResponse } from '../utils/response.js';
 import {
@@ -8,6 +9,8 @@ import {
 } from '../utils/token.js';
 
 const { User, RefreshToken } = db;
+
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 class AuthController {
   static async googleLogin(req, res) {
@@ -39,6 +42,87 @@ class AuthController {
           email: user.email,
           role: user.role,
         },
+      });
+    } catch (err) {
+      return errorResponse(res, err.message);
+    }
+  }
+  
+  static async googleLoginToken(req, res) {
+    try {
+      const { idToken } = req.body;
+
+      const ticket = await googleClient.verifyIdToken({
+        idToken,
+        audience: process.env.GOOGLE_CLIENT_ID,
+      });
+
+      const payloadGoogle = ticket.getPayload();
+
+      const email = payloadGoogle.email;
+      const name = payloadGoogle.name;
+      const googleId = payloadGoogle.sub;
+
+      let user = await User.findOne({ where: { email } });
+
+      if (!user) {
+        user = await User.create({
+          name,
+          email,
+          googleId,
+          provider: 'google',
+        });
+      } else if (!user.googleId) {
+        await user.update({
+          googleId,
+          provider: 'google',
+        });
+      }
+
+      const payload = { id: user.id, role: user.role };
+
+      const accessToken = generateAccessToken(payload);
+      const refreshToken = generateRefreshToken(payload);
+
+      const expiredAt = new Date();
+      expiredAt.setDate(expiredAt.getDate() + 7);
+
+      await RefreshToken.create({
+        token: refreshToken,
+        userId: user.id,
+        expiredAt,
+      });
+
+      return successResponse(res, 'Login with Google success', {
+        accessToken,
+        refreshToken,
+      });
+    } catch (err) {
+      return errorResponse(res, 'Invalid Google token', 401);
+    }
+  }
+
+  static async googleCallback(req, res) {
+    try {
+      const user = req.user;
+
+      const payload = { id: user.id, role: user.role };
+
+      const accessToken = generateAccessToken(payload);
+      const refreshToken = generateRefreshToken(payload);
+
+      const expiredAt = new Date();
+      expiredAt.setDate(expiredAt.getDate() + 7);
+
+      await RefreshToken.create({
+        token: refreshToken,
+        userId: user.id,
+        expiredAt,
+      });
+
+      return successResponse(res, 'Login with Google success', {
+        accessToken,
+        refreshToken,
       });
     } catch (err) {
       return errorResponse(res, err.message);

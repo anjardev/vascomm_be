@@ -26,7 +26,7 @@ export default (sequelize) => {
       },
       provider: {
         type: DataTypes.STRING,
-        defaultValue: "google",
+        defaultValue: "local",
       },
     },
     {
