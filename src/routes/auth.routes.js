@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import passport from 'passport';
 import AuthController from '../controllers/auth.controller.js';
 import { validate } from '../validations/validate.js';
 import Joi from 'joi';
@@ -25,5 +26,21 @@ router.post('/register', validate(registerSchema), AuthController.register);
 router.post('/login', validate(loginSchema), AuthController.login);
 router.post('/refresh-token', validate(refreshSchema), AuthController.refreshToken);
 router.post('/logout', validate(refreshSchema), AuthController.logout);
+
+// redirect ke Google login
+router.get(
+  '/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+  })
+);
+
+// callback dari Google
+router.get(
+  '/google/callback',
+  passport.authenticate('google', { session: false }),
+  AuthController.googleLogin
+);
+
 
 export default router;

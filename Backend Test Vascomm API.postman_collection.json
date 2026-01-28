@@ -25,7 +25,7 @@
               "raw": "{\n  \"name\": \"User Test\",\n  \"email\": \"user@test.com\",\n  \"password\": \"password123\",\n  \"role\": \"user\"\n}"
             },
             "url": {
-              "raw": "{{base_url}}/auth/register",
+              "raw": "{{base_url}}/api/v1/auth/register",
               "host": [
                 "{{base_url}}"
               ],
@@ -52,7 +52,7 @@
               "raw": "{\n  \"email\": \"user14@mail.com\",\n  \"password\": \"password123\"\n}"
             },
             "url": {
-              "raw": "{{base_url}}/auth/login",
+              "raw": "{{base_url}}/api/v1/auth/login",
               "host": [
                 "{{base_url}}"
               ],
@@ -79,7 +79,7 @@
               "raw": "{\n  \"refreshToken\": \"{{refresh_token}}\"\n}"
             },
             "url": {
-              "raw": "{{base_url}}/auth/refresh-token",
+              "raw": "{{base_url}}/api/v1/auth/refresh-token",
               "host": [
                 "{{base_url}}"
               ],
@@ -102,7 +102,7 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/auth/logout",
+              "raw": "{{base_url}}/api/v1/auth/logout",
               "host": [
                 "{{base_url}}"
               ],
@@ -130,7 +130,7 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/users?take=10&skip=0&search=admin",
+              "raw": "{{base_url}}/api/v1/users?take=10&skip=0&search=admin",
               "host": [
                 "{{base_url}}"
               ],
@@ -166,7 +166,7 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/users/{{user_id}}",
+              "raw": "{{base_url}}/api/v1/users/{{user_id}}",
               "host": [
                 "{{base_url}}"
               ],
@@ -197,7 +197,7 @@
               "raw": "{\n  \"name\": \"New User\",\n  \"email\": \"newuser@mail.com\",\n  \"password\": \"password123\",\n  \"role\": \"user\"\n}"
             },
             "url": {
-              "raw": "{{base_url}}/users",
+              "raw": "{{base_url}}/api/v1/users",
               "host": [
                 "{{base_url}}"
               ],
@@ -227,7 +227,7 @@
               "raw": "{\n  \"name\": \"Updated User\"\n}"
             },
             "url": {
-              "raw": "{{base_url}}/users/{{user_id}}",
+              "raw": "{{base_url}}/api/v1/users/{{user_id}}",
               "host": [
                 "{{base_url}}"
               ],
@@ -250,7 +250,7 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/users/{{user_id}}",
+              "raw": "{{base_url}}/api/v1/users/{{user_id}}",
               "host": [
                 "{{base_url}}"
               ],
@@ -278,7 +278,7 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/products?take=10&skip=0&search=produc",
+              "raw": "{{base_url}}/api/v1/products?take=10&skip=0&search=produc",
               "host": [
                 "{{base_url}}"
               ],
@@ -314,7 +314,7 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/products/{{product_id}}",
+              "raw": "{{base_url}}/api/v1/products/{{product_id}}",
               "host": [
                 "{{base_url}}"
               ],
@@ -345,7 +345,7 @@
               "raw": "{\n  \"name\": \"Product B\",\n  \"price\": 100000,\n  \"stock\": 10\n}"
             },
             "url": {
-              "raw": "{{base_url}}/products",
+              "raw": "{{base_url}}/api/v1/products",
               "host": [
                 "{{base_url}}"
               ],
@@ -375,7 +375,7 @@
               "raw": "{\n    \"name\": \"Updated\",\n    \"price\": 120000\n}"
             },
             "url": {
-              "raw": "{{base_url}}/products/{{product_id}}",
+              "raw": "{{base_url}}/api/v1/products/{{product_id}}",
               "host": [
                 "{{base_url}}"
               ],
@@ -398,7 +398,7 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/products/{{product_id}}",
+              "raw": "{{base_url}}/api/v1/products/{{product_id}}",
               "host": [
                 "{{base_url}}"
               ],

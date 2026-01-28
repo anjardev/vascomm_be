@@ -19,6 +19,15 @@ export default (sequelize) => {
         type: DataTypes.ENUM('admin', 'user'),
         defaultValue: 'user',
       },
+      googleId: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true,
+      },
+      provider: {
+        type: DataTypes.STRING,
+        defaultValue: "google",
+      },
     },
     {
       paranoid: true, // soft delete

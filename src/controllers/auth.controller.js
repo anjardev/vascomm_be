@@ -10,6 +10,41 @@ import {
 const { User, RefreshToken } = db;
 
 class AuthController {
+  static async googleLogin(req, res) {
+    try {
+      const user = req.user;
+
+      if (!user) return errorResponse(res, "Google authentication failed", 401);
+
+      const payload = { id: user.id, role: user.role };
+
+      const accessToken = generateAccessToken(payload);
+      const refreshToken = generateRefreshToken(payload);
+
+      const expiredAt = new Date();
+      expiredAt.setDate(expiredAt.getDate() + 7);
+
+      await RefreshToken.create({
+        token: refreshToken,
+        userId: user.id,
+        expiredAt,
+      });
+
+      return successResponse(res, "Login Google success", {
+        accessToken,
+        refreshToken,
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        },
+      });
+    } catch (err) {
+      return errorResponse(res, err.message);
+    }
+  }
+
   static async register(req, res) {
     try {
       const { name, email, password, role } = req.body;

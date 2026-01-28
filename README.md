@@ -37,24 +37,29 @@ The server will run on the configured port (default: 3000).
 ## API Routes
 
 ### Users
-- `GET /api/users` - Get all users
-- `GET /api/users/:id` - Get user by ID
-- `POST /api/users` - Create new user
-- `PUT /api/users/:id` - Update user
-- `DELETE /api/users/:id` - Delete user
+- `GET /api/v1/users` - Get all users
+- `GET /api/v1/users/:id` - Get user by ID
+- `POST /api/v1/users` - Create new user
+- `PUT /api/v1/users/:id` - Update user
+- `DELETE /api/v1/users/:id` - Delete user
 
 ### Authentication
-- `POST /api/auth/login` - User login
-- `POST /api/auth/refresh-token` - Refresh Token
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/logout` - User logout
+- `POST /api/v1/auth/login` - User login
+- `POST /api/v1/auth/refresh-token` - Refresh Token
+- `POST /api/v1/auth/register` - User registration
+- `POST /api/v1/auth/logout` - User logout
+
+### Authentication (Google OAuth)
+> Redirect-based OAuth flow (browser only).
+- `GET /api/v1/auth/google` - Login with Google
+- `GET /api/v1/auth/google/callback` - Google OAuth callback
 
 ### Products
-- `GET /api/products` - Get all products
-- `GET /api/products/:id` - Get product by ID
-- `POST /api/products` - Create product
-- `PUT /api/products/:id` - Update product
-- `DELETE /api/products/:id` - Delete product
+- `GET /api/v1/products` - Get all products
+- `GET /api/v1/products/:id` - Get product by ID
+- `POST /api/v1/products` - Create product
+- `PUT /api/v1/products/:id` - Update product
+- `DELETE /api/v1/products/:id` - Delete product
 
 ## Notes
 

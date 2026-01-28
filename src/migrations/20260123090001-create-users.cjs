@@ -23,7 +23,19 @@ module.exports = {
 
       password: {
         type: Sequelize.STRING,
+        allowNull: true, // null untuk user OAuth
+      },
+
+      provider: {
+        type: Sequelize.ENUM('local', 'google'),
         allowNull: false,
+        defaultValue: 'local',
+      },
+
+      googleId: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        unique: true,
       },
 
       role: {
